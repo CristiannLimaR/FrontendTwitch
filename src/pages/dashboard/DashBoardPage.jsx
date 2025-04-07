@@ -1,4 +1,4 @@
-
+import './dashboardPage.css'
 export const DashBoardPage = () => {
   return (
     <div>DashboardPage</div>

@@ -4,12 +4,13 @@ import { login as loginRequest } from "../../services/api.js";
 import toast from "react-hot-toast";
 
 
-export const useLogin = async () => {
+export const useLogin = () => {
     const [isLoading, setIsLoading] = useState(false)
 
     const navigate = useNavigate()
 
     const login = async (email, password) => {
+
         setIsLoading(true)
 
         const response = await loginRequest({
@@ -19,17 +20,17 @@ export const useLogin = async () => {
 
         setIsLoading(false)
 
-        if (response.error) {
+        if(response.error){
+            console.log(response.e)
             return toast.error(response.error?.response?.data || 'An error occurred while logging in, please try again.')
         }
 
-        const { useDetails } = response.data
+        const { userDetails } = response.data
 
-        localStorage.setItem('user', JSON.stringify(useDetails))
+        localStorage.setItem('user', JSON.stringify(userDetails));
 
         navigate('/')
     }
-
     return {
         login,
         isLoading
