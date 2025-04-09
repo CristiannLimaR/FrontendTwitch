@@ -1,2 +1,4 @@
-export { useLogin } from "./useLogin.js";
-export {useRegister} from "./useRegister.js"
+export { useLogin } from "./useLogin";
+export { useRegister } from "./useRegister";
+export { logout } from "./useLogout";
+export { useUserDetails } from "./useUserDetails";

@@ -14,7 +14,7 @@ export const useRegister = () => {
 
         const response = await registerRequest({
             email,
-            pasword,
+            password,
             username
         })
 
