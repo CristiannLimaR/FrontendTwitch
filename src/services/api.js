@@ -76,6 +76,28 @@ export const changePassword = async (data) => {
   }
 }
 
+export const getChannelsDetails = async (channelId) => {
+  try {
+    return await apiClient.get(`/channels/${channelId}`)
+  } catch (e) {
+    return{
+      error: true,
+      e
+    }
+  }
+}
+
+
+export const followChannel = async (channelId) => {
+  try {
+    return await apiClient.get(`/channels/follow`, channelId)
+  } catch (e) {
+    return{
+      error: true,
+      e
+    }
+  }
+}
 export const updateChannelSettings = async (data) => {
   try {
     return await apiClient.put("/settings/channel", data)
