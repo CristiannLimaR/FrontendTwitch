@@ -3,7 +3,6 @@ import { ChannelSettings } from "../channel/ChannelSettings";
 import {LoadingSpinner} from '../LoadingSpinner'
 import { StreamKey } from "./StreamKey";
 import { PasswordSettings } from "./passwordSettings";
-import { useState } from "react";
 
 
 export const Settings = () => {
@@ -12,13 +11,14 @@ export const Settings = () => {
     if(isFetching){
         return <LoadingSpinner/>
     }
+    console.log(channelSettings)
 
     return(
         <div className="settings-container">
             <span>Settings</span>
             <ChannelSettings settings={channelSettings} saveSettings={saveSettings}/>
             <PasswordSettings/>
-            <StreamKey stremKey={channelSettings.streamKey}/>
+            <StreamKey streamKey={channelSettings.streamKey}/>
         </div>
     )
 }

@@ -19,8 +19,8 @@ export const Stream = ({streamUrl}) => {
 
 export const ChannelView = ({getChannels}) => {
 
-    const { channelDetails,isFetching, getChannelDetails,  } = useChannelDetails();
-    console.log(channelDetails)
+    const { isFetching, getChannelDetails, channelDetails } = useChannelDetails();
+
     const { id } = useParams();
 
     useEffect(()=> {
@@ -31,23 +31,22 @@ export const ChannelView = ({getChannels}) => {
         return <LoadingSpinner/>
     }
 
-    console.log(channelDetails.data)
     return(
         <div className="channel-container">
             <div className="channel-video-description-section">
-                {channelDetails.isOnline ? (
-                    <Stream streamUrl={channelDetails.streamUrl}/>
+                {channelDetails.data.isOnline ? (
+                    <Stream streamUrl={channelDetails.data.streamUrl}/>
                 ) : (
                     <div className="channel-offline-placeholder">
                         <span>Channel is offline</span>
                     </div>
                 )}
-                
+
                 <ChannelDescription
-                    channelId={channelDetails.id}
-                    title={channelDetails.title}
-                    description={channelDetails.description}
-                    username={channelDetails.username}
+                    channelId={channelDetails.data.id}
+                    title={channelDetails.data.title}
+                    description={channelDetails.data.description}
+                    username={channelDetails.data.username}
                     getChannels={getChannels}
                 />
             </div>
